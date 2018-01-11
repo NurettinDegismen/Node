@@ -31,3 +31,52 @@ let yirmiDugumu = Node(value: 20, leftChild: onyediDugumu, rightChild: yirmibesD
 
 //bagımsız kök düğüm
 let onbesDugumu = Node(value: 15, leftChild: onDugumu, rightChild: yirmiDugumu)
+
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+//S2 Cevap
+//1-2-3 .... 3-2-1
+class Node {
+    var value: Int
+    var next: Node?
+    
+    init(value:Int, next: Node?) {
+        self.value = value
+        self.next = next
+    }
+}
+
+let uc = Node(value: 3, next: nil)
+let iki = Node(value: 2, next: uc)
+let bir = Node(value: 1, next: iki)
+
+func list(head: Node?) {
+    var curNode = head
+    while curNode != nil {
+        print(curNode?.value ?? -1)
+        curNode = curNode?.next
+    }
+}
+
+list(head: bir) // sıralı saydırma
+
+func returnList(head: Node?) -> Node? {
+    var curNode = head
+    var prv: Node?
+    var next: Node?
+    
+    while curNode != nil {
+        next = curNode?.next
+        curNode?.next = prv
+        
+        prv = curNode
+        curNode = next
+    }
+    return prv
+}
+
+print("***************")
+let revList = returnList(head: bir)
+list(head: revList) // geriye doğru döndürme
