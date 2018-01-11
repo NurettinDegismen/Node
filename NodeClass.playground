@@ -1,0 +1,33 @@
+//: Playground - noun: a place where people can play
+
+//              15       İkili arama ağacımız bu şekilde olsun.
+//             /  \
+//           10    20
+//          / \    / \
+//         5  11  17 25
+//S1 Cevap
+import UIKit
+
+class Node {
+    var value: Int = 0
+    var leftChild: Node?
+    var rightChild: Node?
+    
+    init(value: Int, leftChild: Node?, rightChild: Node?) {
+        self.value = value
+        self.leftChild = leftChild
+        self.rightChild = rightChild
+    }
+}
+//sol kol
+let besDugumu = Node(value: 5, leftChild: nil, rightChild: nil)
+let onbirDugumu = Node(value: 11, leftChild: nil, rightChild: nil)
+let onDugumu = Node(value: 10, leftChild: besDugumu, rightChild: onbirDugumu)
+
+//sag kol
+let onyediDugumu = Node(value: 17, leftChild: nil, rightChild: nil)
+let yirmibesDugumu = Node(value: 25, leftChild: nil, rightChild: nil)
+let yirmiDugumu = Node(value: 20, leftChild: onyediDugumu, rightChild: yirmibesDugumu)
+
+//bagımsız kök düğüm
+let onbesDugumu = Node(value: 15, leftChild: onDugumu, rightChild: yirmiDugumu)
